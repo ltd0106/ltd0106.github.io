@@ -2,16 +2,16 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>末语小屋</title>
-    <link>https://ltd0106.github.io/</link>
+    <link>https://moyun.eu.org/</link>
     <description>Je pense, donc je suis</description>
     <language>zh-cn</language>
     <generator>Gridea Pro</generator>
     <lastBuildDate>Tue, 29 Sep 2026 19:39:38 +0800</lastBuildDate>
-    <atom:link href="https://ltd0106.github.io/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <atom:link href="https://moyun.eu.org/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <item>
       <title>念念不忘，必有回响 —— Gridea Pro，我们回来了</title>
-      <link>https://ltd0106.github.io/post/hello-gridea-pro/</link>
-      <guid isPermaLink="true">https://ltd0106.github.io/post/hello-gridea-pro/</guid>
+      <link>https://moyun.eu.org/post/hello-gridea-pro/</link>
+      <guid isPermaLink="true">https://moyun.eu.org/post/hello-gridea-pro/</guid>
       <pubDate>Tue, 29 Sep 2026 19:39:21 +0800</pubDate>
       <description><![CDATA[<p>你好，欢迎来到 <strong>Gridea Pro</strong>。</p>
 <p>如果你正在读这篇文章，说明你已经迈出了最重要的一步——决定拥有一个属于自己的博客。</p>
@@ -20,8 +20,8 @@
     </item>
     <item>
       <title>Gridea Pro 完全上手指南 —— 从写作到发布，一篇搞定</title>
-      <link>https://ltd0106.github.io/post/quick-start/</link>
-      <guid isPermaLink="true">https://ltd0106.github.io/post/quick-start/</guid>
+      <link>https://moyun.eu.org/post/quick-start/</link>
+      <guid isPermaLink="true">https://moyun.eu.org/post/quick-start/</guid>
       <pubDate>Tue, 29 Sep 2026 19:38:21 +0800</pubDate>
       <description><![CDATA[<p>这篇指南会带你一步一步熟悉 Gridea Pro 的界面和操作，从写第一篇文章到把博客发布到互联网上。</p>
 ]]></description>
@@ -30,8 +30,8 @@
     </item>
     <item>
       <title>都 2026 年了，我们为什么还要写博客</title>
-      <link>https://ltd0106.github.io/post/why-we-write/</link>
-      <guid isPermaLink="true">https://ltd0106.github.io/post/why-we-write/</guid>
+      <link>https://moyun.eu.org/post/why-we-write/</link>
+      <guid isPermaLink="true">https://moyun.eu.org/post/why-we-write/</guid>
       <pubDate>Tue, 29 Sep 2026 19:37:21 +0800</pubDate>
       <description><![CDATA[<p>你有没有过这样的时刻——</p>
 <p>某天深夜，突然想起一个很久没联系的人，想跟他说点什么，却发现你们之间已经隔了太多年的空白，连开口的理由都找不到了。</p>
@@ -40,8 +40,8 @@
     </item>
     <item>
       <title>独立博客没有死，正在死的是平庸的博客</title>
-      <link>https://ltd0106.github.io/post/indie-blog-is-not-dead/</link>
-      <guid isPermaLink="true">https://ltd0106.github.io/post/indie-blog-is-not-dead/</guid>
+      <link>https://moyun.eu.org/post/indie-blog-is-not-dead/</link>
+      <guid isPermaLink="true">https://moyun.eu.org/post/indie-blog-is-not-dead/</guid>
       <pubDate>Tue, 29 Sep 2026 19:36:21 +0800</pubDate>
       <description><![CDATA[<p>你可能听过很多次这样的说法：“博客已经过时了”、“现在谁还看博客”、“有公众号和小红书就够了”。</p>
 <p>但事实是——2026 年的今天，全球有超过 6 亿个博客，每天产生 750 万篇新文章，77% 的互联网用户仍然在定期阅读博客。</p>
@@ -51,8 +51,8 @@
     </item>
     <item>
       <title>我为什么复活了 Gridea —— 每个想写点什么的人，都值得一个更简单的开始</title>
-      <link>https://ltd0106.github.io/post/why-i-revived-gridea/</link>
-      <guid isPermaLink="true">https://ltd0106.github.io/post/why-i-revived-gridea/</guid>
+      <link>https://moyun.eu.org/post/why-i-revived-gridea/</link>
+      <guid isPermaLink="true">https://moyun.eu.org/post/why-i-revived-gridea/</guid>
       <pubDate>Tue, 29 Sep 2026 19:35:21 +0800</pubDate>
       <description><![CDATA[<p>2022 年 5 月 17 日，Gridea 发布了它的最后一个版本 v0.9.3。</p>
 <p>此后，再也没有更新过。Issues 无人回复，PR 无人合并。一个曾经帮助 28,000 多位用户搭建了自己博客的工具，就这样安静地停在了那里。</p>

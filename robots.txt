@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ltd0106.github.io/sitemap.xml
+Sitemap: https://moyun.eu.org/sitemap.xml
