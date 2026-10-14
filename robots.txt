@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://moyun.eu.org/sitemap.xml
+Sitemap: https://ireader.eu.org/sitemap.xml
