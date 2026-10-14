@@ -6,13 +6,20 @@
     <description>Je pense, donc je suis</description>
     <language>zh-cn</language>
     <generator>Gridea Pro</generator>
-    <lastBuildDate>Wed, 14 Oct 2026 14:06:48 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 14 Oct 2026 14:05:12 +0800</lastBuildDate>
     <atom:link href="https://ireader.eu.org/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <item>
+      <title>音乐测试</title>
+      <link>https://ireader.eu.org/post/VqgoYr/</link>
+      <guid isPermaLink="true">https://ireader.eu.org/post/VqgoYr/</guid>
+      <pubDate>Wed, 14 Oct 2026 22:04:27 +0800</pubDate>
+      <description><![CDATA[<pre><code class="language-markdown">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outch...]]></description>
+    </item>
     <item>
       <title>为你的 HTML 网页添加高颜值粒子线条特效</title>
       <link>https://ireader.eu.org/post/rE9kZP/</link>
       <guid isPermaLink="true">https://ireader.eu.org/post/rE9kZP/</guid>
-      <pubDate>Wed, 14 Oct 2026 14:06:48 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 14:06:48 +0800</pubDate>
       <description><![CDATA[<pre><code class="language-markdown">&lt;script src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js&quot;&gt;&lt;/script&gt;
 ## 超高颜值粒子特效背景添加教程
 &gt; 一个基于 html5 canvas 绘制的网页背景效果
@@ -25,7 +32,7 @@
       <title>如何给你的网站加上 Github Contributions Chart</title>
       <link>https://ireader.eu.org/post/vOP79u/</link>
       <guid isPermaLink="true">https://ireader.eu.org/post/vOP79u/</guid>
-      <pubDate>Wed, 14 Oct 2026 14:05:15 +0000</pubDate>
+      <pubDate>Wed, 14 Oct 2026 14:05:15 +0800</pubDate>
       <description><![CDATA[<pre><code class="language-markdown">## 为你的网页加上你的 Github 贡献表
 
 Github 贡献图标算得上` 程序员 `日历了，但是仅仅局限于 Github 并不能满足我们
@@ -37,13 +44,6 @@ Github 贡献图标算得上` 程序员 `日历了，但是仅仅局限于 Githu
 也可以查看[Github 仓库地址...
 </code></pre>
 ]]></description>
-    </item>
-    <item>
-      <title>音乐测试</title>
-      <link>https://ireader.eu.org/post/VqgoYr/</link>
-      <guid isPermaLink="true">https://ireader.eu.org/post/VqgoYr/</guid>
-      <pubDate>Wed, 14 Oct 2026 22:04:27 +0800</pubDate>
-      <description><![CDATA[<pre><code class="language-markdown">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outch...]]></description>
     </item>
     <item>
       <title>黑暗模式测试</title>
