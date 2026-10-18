@@ -6,8 +6,29 @@
     <description>Je pense, donc je suis</description>
     <language>zh-cn</language>
     <generator>Gridea Pro</generator>
-    <lastBuildDate>Wed, 14 Oct 2026 14:05:12 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 02:11:48 +0000</lastBuildDate>
     <atom:link href="https://ireader.eu.org/feed.xml" rel="self" type="application/rss+xml"></atom:link>
+    <item>
+      <title>About</title>
+      <link>https://ireader.eu.org/post/about/</link>
+      <guid isPermaLink="true">https://ireader.eu.org/post/about/</guid>
+      <pubDate>Mon, 19 Oct 2026 02:11:48 +0000</pubDate>
+      <description><![CDATA[<h1 id="heading">关于</h1>
+<p>你好，我是 <strong>末语</strong>。</p>
+<p>欢迎来到这里。</p>
+<p>这是我的个人博客，也是我在互联网里留下的一块小地方。</p>
+<h2 id="heading-1">我是谁</h2>
+<p>平时主要接触 <strong>电气、电力系统、继电保护、自动控制</strong> 相关内容。</p>
+<p>工作和学习之外，我也喜欢折腾一些技术和互联网相关的东西，比如：</p>
+<ul>
+<li>Linux / VPS / 云服务器</li>
+<li>Python 与各种小工具</li>
+<li>网站搭建与开源项目</li>
+<li>AI 与自动化</li>
+<li>投资与金&hellip;</li>
+</ul>
+]]></description>
+    </item>
     <item>
       <title>音乐测试</title>
       <link>https://ireader.eu.org/post/VqgoYr/</link>
