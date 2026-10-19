@@ -6,13 +6,13 @@
     <description>Je pense, donc je suis</description>
     <language>zh-cn</language>
     <generator>Gridea Pro</generator>
-    <lastBuildDate>Mon, 19 Oct 2026 02:11:48 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 19 Oct 2026 02:11:48 +0800</lastBuildDate>
     <atom:link href="https://ireader.eu.org/feed.xml" rel="self" type="application/rss+xml"></atom:link>
     <item>
       <title>About</title>
       <link>https://ireader.eu.org/post/about/</link>
       <guid isPermaLink="true">https://ireader.eu.org/post/about/</guid>
-      <pubDate>Mon, 19 Oct 2026 02:11:48 +0000</pubDate>
+      <pubDate>Mon, 19 Oct 2026 02:11:48 +0800</pubDate>
       <description><![CDATA[<h1 id="heading">关于</h1>
 <p>你好，我是 <strong>末语</strong>。</p>
 <p>欢迎来到这里。</p>
@@ -54,17 +54,14 @@
       <link>https://ireader.eu.org/post/vOP79u/</link>
       <guid isPermaLink="true">https://ireader.eu.org/post/vOP79u/</guid>
       <pubDate>Wed, 14 Oct 2026 14:05:15 +0800</pubDate>
-      <description><![CDATA[<pre><code class="language-markdown">## 为你的网页加上你的 Github 贡献表
-
-Github 贡献图标算得上` 程序员 `日历了，但是仅仅局限于 Github 并不能满足我们
-如果想要在自己的网页或者博客加载这个` 可视化数据表` 。
-
-那么你就需要这个` githubchart-api `
-
-你可以查看[官网](https://ghchart.rshah.org/)
-也可以查看[Github 仓库地址...
-</code></pre>
+      <description><![CDATA[<h2 id="-github-">为你的网页加上你的 Github 贡献表</h2>
+<p>Github 贡献图标算得上<code>程序员</code>日历了，但是仅仅局限于 Github 并不能满足我们<br />
+如果想要在自己的网页或者博客加载这个<code> 可视化数据表</code> 。</p>
+<p>那么你就需要这个<code>githubchart-api</code></p>
+<p>你可以查看<a href="https://ghchart.rshah.org/">官网</a><br />
+也可以查看[Github 仓库地址](https://gi&hellip;</p>
 ]]></description>
+      <category>教程</category>
     </item>
     <item>
       <title>黑暗模式测试</title>
