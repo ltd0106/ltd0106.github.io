@@ -34,7 +34,8 @@
       <link>https://ireader.eu.org/post/VqgoYr/</link>
       <guid isPermaLink="true">https://ireader.eu.org/post/VqgoYr/</guid>
       <pubDate>Wed, 14 Oct 2026 22:04:27 +0800</pubDate>
-      <description><![CDATA[<pre><code class="language-markdown">&lt;iframe frameborder=&quot;no&quot; border=&quot;0&quot; marginwidth=&quot;0&quot; marginheight=&quot;0&quot; width=330 height=86 src=&quot;//music.163.com/outch...]]></description>
+      <description><![CDATA[<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://ireader.eu.org//music.163.com/outchain/player?type=2&id=28785328&auto=1&height=66"></iframe>]]></description>
+      <category>测试</category>
     </item>
     <item>
       <title>为你的 HTML 网页添加高颜值粒子线条特效</title>
@@ -43,6 +44,7 @@
       <pubDate>Wed, 14 Oct 2026 14:06:48 +0800</pubDate>
       <description><![CDATA[<!-- raw HTML omitted -->
 ]]></description>
+      <category>教程</category>
     </item>
     <item>
       <title>如何给你的网站加上 Github Contributions Chart</title>
@@ -57,22 +59,6 @@
 也可以查看[Github 仓库地址](https://github&hellip;</p>
 ]]></description>
       <category>教程</category>
-    </item>
-    <item>
-      <title>黑暗模式测试</title>
-      <link>https://ireader.eu.org/post/G1zZIi/</link>
-      <guid isPermaLink="true">https://ireader.eu.org/post/G1zZIi/</guid>
-      <pubDate>Wed, 14 Oct 2026 14:01:10 +0800</pubDate>
-      <description><![CDATA[<pre><code class="language-markdown">&lt;script src=&quot;https://cdn.jsdelivr.net/npm/darkmode-js@1.4.0/lib/darkmode-js.min.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-  new Darkmode().showWidget();
-&lt;/script&gt;
-</code></pre>
-<pre><code class="language-markdown">## 测试黑暗模式
-
-简单的说，很失败，有种负片的感觉...
-</code></pre>
-]]></description>
     </item>
     <item>
       <title>无题</title>
