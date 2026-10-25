@@ -41,12 +41,12 @@
       <link>https://ireader.eu.org/post/rE9kZP/</link>
       <guid isPermaLink="true">https://ireader.eu.org/post/rE9kZP/</guid>
       <pubDate>Wed, 14 Oct 2026 14:06:48 +0800</pubDate>
-      <description><![CDATA[<pre><code class="language-markdown">&lt;script src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js&quot;&gt;&lt;/script&gt;
-## 超高颜值粒子特效背景添加教程
-&gt; 一个基于 html5 canvas 绘制的网页背景效果
-
-你也可以直接访问这个项目的[ Github ](https://github.com/hustcc/canvas-...
-</code></pre>
+      <description><![CDATA[<h2 id="heading">超高颜值粒子特效背景添加教程</h2>
+<blockquote>
+<p>一个基于 html5 canvas 绘制的网页背景效果</p>
+</blockquote>
+<p>你也可以直接访问这个项目的 <a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md">Github</a> 进行查看文档。<br />
+或者访问<a href="https://git.hust.cc/canvas-nest.js/">演示网址</a>进行在线查&hellip;</p>
 ]]></description>
     </item>
     <item>
@@ -56,10 +56,10 @@
       <pubDate>Wed, 14 Oct 2026 14:05:15 +0800</pubDate>
       <description><![CDATA[<h2 id="-github-">为你的网页加上你的 Github 贡献表</h2>
 <p>Github 贡献图标算得上<code>程序员</code>日历了，但是仅仅局限于 Github 并不能满足我们<br />
-如果想要在自己的网页或者博客加载这个<code> 可视化数据表</code> 。</p>
+如果想要在自己的网页或者博客加载这个 <code>可视化数据表</code> 。</p>
 <p>那么你就需要这个<code>githubchart-api</code></p>
 <p>你可以查看<a href="https://ghchart.rshah.org/">官网</a><br />
-也可以查看[Github 仓库地址](https://gi&hellip;</p>
+也可以查看[Github 仓库地址](https://github&hellip;</p>
 ]]></description>
       <category>教程</category>
     </item>
