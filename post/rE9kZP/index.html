@@ -249,12 +249,12 @@
     
 
     
-<meta name="description" content="超高颜值粒子特效背景添加教程 一个基于 html5 canvas 绘制的网页背景效果 你也可以直接访问这个项目的 Github 进行查看文档。 或者访问演示网址进行在线查&amp;hellip;">
+<meta name="description" content="Je pense, donc je suis">
 <link rel="canonical" href="https://ireader.eu.org/post/rE9kZP/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"为你的 HTML 网页添加高颜值粒子线条特效","url":"https://ireader.eu.org/post/rE9kZP/","description":"超高颜值粒子特效背景添加教程 一个基于 html5 canvas 绘制的网页背景效果 你也可以直接访问这个项目的 Github 进行查看文档。 或者访问演示网址进行在线查\u0026hellip;","datePublished":"2026-10-14T14:06:48+08:00","dateModified":"2026-10-25T15:00:39+08:00","author":{"@type":"Person","name":"末语小屋"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"末语小屋"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"为你的 HTML 网页添加高颜值粒子线条特效","url":"https://ireader.eu.org/post/rE9kZP/","description":"Je pense, donc je suis","datePublished":"2026-10-14T14:06:48+08:00","dateModified":"2026-10-25T15:07:49+08:00","author":{"@type":"Person","name":"末语小屋"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"末语小屋"}}</script>
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ireader.eu.org","name":"末语小屋","position":1},{"@type":"ListItem","item":"https://ireader.eu.org/post/rE9kZP/","name":"为你的 HTML 网页添加高颜值粒子线条特效","position":2}]}</script>
 <meta property="og:title" content="为你的 HTML 网页添加高颜值粒子线条特效">
-<meta property="og:description" content="超高颜值粒子特效背景添加教程 一个基于 html5 canvas 绘制的网页背景效果 你也可以直接访问这个项目的 Github 进行查看文档。 或者访问演示网址进行在线查&amp;hellip;">
+<meta property="og:description" content="Je pense, donc je suis">
 <meta property="og:url" content="https://ireader.eu.org/post/rE9kZP/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="末语小屋">
@@ -262,7 +262,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://ireader.eu.org/post/rE9kZP/">
 <meta name="twitter:title" content="为你的 HTML 网页添加高颜值粒子线条特效">
-<meta name="twitter:description" content="超高颜值粒子特效背景添加教程 一个基于 html5 canvas 绘制的网页背景效果 你也可以直接访问这个项目的 Github 进行查看文档。 或者访问演示网址进行在线查&amp;hellip;">
+<meta name="twitter:description" content="Je pense, donc je suis">
 <meta name="twitter:image" content="/images/avatar.png">
 </head>
 
@@ -338,7 +338,7 @@
                 <div class="mod-post__meta">
                     <time datetime="2026-10-14">
                         2026-10-14
-                    </time> • 1 分钟阅读 •
+                    </time> • 4 分钟阅读 •
                         
                         
                         
@@ -348,29 +348,151 @@
 
                 <div class="mod-post__entry wzulli">
                     
-                            <h2 id="heading">超高颜值粒子特效背景添加教程</h2>
+                            <script
+  type="text/javascript"
+  color="0,108,255"
+  pointColor="0,108,255"
+  opacity="0.55"
+  zIndex="2"
+  count="120"
+  src="https://cdnjs.cloudflare.com/ajax/libs/canvas-nest.js/1.0.1/canvas-nest.min.js">
+</script>
+<h2 id="heading">超高颜值粒子线条背景特效</h2>
 <blockquote>
-<p>一个基于 html5 canvas 绘制的网页背景效果</p>
+<p>一个基于 HTML5 Canvas 绘制的网页动态粒子背景效果。</p>
 </blockquote>
-<p>你也可以直接访问这个项目的 <a href="https://github.com/hustcc/canvas-nest.js/blob/master/README-zh.md">Github</a> 进行查看文档。<br />
-或者访问<a href="https://git.hust.cc/canvas-nest.js/">演示网址</a>进行在线查看。<br />
-这篇文章已经使用了这个项目，你可以直接预览效果。</p>
+<p>本页面已经加载了 <code>canvas-nest.js</code>，如果运行正常，你应该可以直接看到鼠标附近的粒子和连线效果。</p>
+<p>项目地址：</p>
+<p><a href="https://github.com/hustcc/canvas-nest.js">canvas-nest.js GitHub</a></p>
+<hr />
 <h2 id="heading-1">使用方法</h2>
-<h3 id="heading-2">插入代码</h3>
-<p>将这段代码插入你 HTML 的 和 之间。<br />
-<code>&lt;script type=&quot;text/javascript&quot; src=&quot;canvas-nest.min,js&quot;&gt;&lt;/script&gt;</code></p>
-<p>1.如果使用 Github 项目中的代码，需要提前下载<code>canvas-nest.min.js</code>这个<code>js</code>文件。<br />
-2.或者使用 <a href="https://www.bootcdn.cn/canvas-nest.js/">bootcdn</a>加速后的：<br />
-<code>&lt;script src=&quot;//cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js&quot;&gt;&lt;/script&gt;</code><br />
-注意请勿插入到<code>&lt;head&gt;</code>和<code>&lt;/head&gt;</code>之间</p>
-<h2 id="heading-3">配置</h2>
-<p>1.color: 线条颜色, 默认:<code>'0,0,0'</code>；三个数字分别为(R,G,B)，注意用,分割<br />
-2.pointColor: 交点颜色, 默认:<code>'0,0,0'</code>；三个数字分别为(R,G,B)，注意用,分割<br />
-3.opacity: 线条透明度（0~1）, 默认: <code>0.5</code><br />
-4.count: 线条的总数量, 默认: <code>150</code><br />
-5.zIndex: 背景的z-index属性，css属性用于控制所在层的位置, 默认: -1</p>
-<h2 id="example">Example</h2>
-<p>&lt;script type=“text/javascript” color=“0,0,255” opacity=&lsquo;0.7&rsquo; zIndex=“-2” count=“99” src=“dist/canvas-nest.js”&gt;&lt;/script&gt;</p>
+<h3 id="1--canvas-nestjs">1. 引入 canvas-nest.js</h3>
+<p>推荐使用 cdnjs：</p>
+<pre><code class="language-html">&lt;script
+  type=&quot;text/javascript&quot;
+  color=&quot;0,108,255&quot;
+  pointColor=&quot;0,108,255&quot;
+  opacity=&quot;0.55&quot;
+  zIndex=&quot;2&quot;
+  count=&quot;120&quot;
+  src=&quot;https://cdnjs.cloudflare.com/ajax/libs/canvas-nest.js/1.0.1/canvas-nest.min.js&quot;&gt;
+&lt;/script&gt;
+</code></pre>
+<p>在 Gridea Pro 中，可以直接把这段代码放在文章正文中。</p>
+<p>如果希望整个博客所有页面都显示粒子效果，更推荐把它加入主题的页脚代码、Footer 自定义代码，或者放在 <code>&lt;/body&gt;</code> 标签之前。</p>
+<hr />
+<h2 id="heading-2">参数说明</h2>
+<h3 id="color">color</h3>
+<p>线条颜色。</p>
+<p>格式：</p>
+<pre><code class="language-text">R,G,B
+</code></pre>
+<p>例如蓝色：</p>
+<pre><code class="language-text">0,108,255
+</code></pre>
+<hr />
+<h3 id="pointcolor">pointColor</h3>
+<p>粒子点的颜色。</p>
+<p>例如：</p>
+<pre><code class="language-text">0,108,255
+</code></pre>
+<hr />
+<h3 id="opacity">opacity</h3>
+<p>线条透明度，范围：</p>
+<pre><code class="language-text">0 ~ 1
+</code></pre>
+<p>例如：</p>
+<pre><code class="language-text">0.55
+</code></pre>
+<p>数值越高，线条越明显。</p>
+<hr />
+<h3 id="count">count</h3>
+<p>粒子的数量。</p>
+<p>例如：</p>
+<pre><code class="language-text">120
+</code></pre>
+<p>粒子越多，视觉效果越密集，同时也会增加一定的浏览器性能开销。</p>
+<hr />
+<h3 id="zindex">zIndex</h3>
+<p>控制粒子 Canvas 所在的页面层级。</p>
+<p>旧教程通常使用：</p>
+<pre><code class="language-text">-1
+</code></pre>
+<p>或者：</p>
+<pre><code class="language-text">-2
+</code></pre>
+<p>但在部分 Gridea Pro 主题中，页面主体拥有白色背景，负数层级会导致粒子 Canvas 被页面背景完全遮住。</p>
+<p>因此当前主题建议先使用：</p>
+<pre><code class="language-text">2
+</code></pre>
+<p>确认粒子效果可以正常显示后，再根据主题结构调整层级。</p>
+<hr />
+<h2 id="heading-3">推荐配置</h2>
+<p>适合当前博客的蓝色粒子效果：</p>
+<pre><code class="language-html">&lt;script
+  type=&quot;text/javascript&quot;
+  color=&quot;0,108,255&quot;
+  pointColor=&quot;0,108,255&quot;
+  opacity=&quot;0.55&quot;
+  zIndex=&quot;2&quot;
+  count=&quot;120&quot;
+  src=&quot;https://cdnjs.cloudflare.com/ajax/libs/canvas-nest.js/1.0.1/canvas-nest.min.js&quot;&gt;
+&lt;/script&gt;
+</code></pre>
+<p>如果希望效果更明显：</p>
+<pre><code class="language-html">&lt;script
+  type=&quot;text/javascript&quot;
+  color=&quot;0,108,255&quot;
+  pointColor=&quot;0,108,255&quot;
+  opacity=&quot;0.75&quot;
+  zIndex=&quot;2&quot;
+  count=&quot;160&quot;
+  src=&quot;https://cdnjs.cloudflare.com/ajax/libs/canvas-nest.js/1.0.1/canvas-nest.min.js&quot;&gt;
+&lt;/script&gt;
+</code></pre>
+<hr />
+<h2 id="gridea-pro-">Gridea Pro 主题兼容处理</h2>
+<p>如果脚本已经正常加载，但仍然看不到粒子，可以在主题的自定义 CSS 中加入：</p>
+<pre><code class="language-css">body {
+  position: relative;
+}
+
+.main {
+  position: relative;
+  z-index: 1;
+}
+
+canvas {
+  pointer-events: none;
+}
+</code></pre>
+<p>如果需要让粒子显示在页面主体后方，可以进一步把主体背景改成半透明：</p>
+<pre><code class="language-css">.main {
+  position: relative;
+  z-index: 1;
+  background: rgba(255, 255, 255, 0.86) !important;
+}
+</code></pre>
+<p>这样粒子效果就可以透过页面背景显示出来。</p>
+<hr />
+<h2 id="heading-4">常见问题</h2>
+<p>如果页面完全没有粒子效果，可以打开：</p>
+<pre><code class="language-text">F12 → Network
+</code></pre>
+<p>搜索：</p>
+<pre><code class="language-text">canvas-nest
+</code></pre>
+<p>正常情况下应该看到：</p>
+<pre><code class="language-text">canvas-nest.min.js
+200
+</code></pre>
+<p>如果出现：</p>
+<pre><code class="language-text">404
+ERR_CONNECTION_RESET
+ERR_BLOCKED_BY_CLIENT
+</code></pre>
+<p>说明 JavaScript 文件没有正常加载。</p>
+<p>如果脚本请求是 <code>200</code>，但页面仍然没有效果，通常就是 <code>z-index</code> 或主题背景层级导致的。</p>
 
                 </div>
 
