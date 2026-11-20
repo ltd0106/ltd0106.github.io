@@ -1,0 +1,613 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width" />
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
+
+    <meta name="generator" content="Gridea Pro 1.3.0-beta.2">
+    <title>第2章：借伞的人 | 云深未语</title>
+
+    
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#292a2d" media="(prefers-color-scheme: dark)">
+
+    
+    <link rel="shortcut icon" href="/images/theme/月下山川与书卷图标.png">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+    
+    <style>:root{--accent-color:#28df99;}</style>
+    
+
+    <script>
+    // 自动为所有 target="_blank" 的链接添加 rel="noopener noreferrer"
+    document.addEventListener('DOMContentLoaded', function() {
+        var links = document.querySelectorAll('a[target="_blank"]');
+        links.forEach(function(link) {
+            var rel = link.getAttribute('rel') || '';
+            if (rel.indexOf('noopener') === -1) {
+                rel += ' noopener';
+            }
+            if (rel.indexOf('noreferrer') === -1) {
+                rel += ' noreferrer';
+            }
+            link.setAttribute('rel', rel.trim());
+        });
+    });
+</script>
+
+
+
+    <script>
+    // declaraction of document.ready() function.
+    (function () {
+        var ie = !!(window.attachEvent && !window.opera);
+        var wk = /webkit\/(\d+)/i.test(navigator.userAgent) && (RegExp.$1 < 525);
+        var fn = [];
+        var run = function () {
+            for (var i = 0; i < fn.length; i++) fn[i]();
+        };
+        var d = document;
+        d.ready = function (f) {
+            if (!ie && !wk && d.addEventListener)
+                return d.addEventListener('DOMContentLoaded', f, false);
+            if (fn.push(f) > 1) return;
+            if (ie)
+                (function () {
+                    try {
+                        d.documentElement.doScroll('left');
+                        run();
+                    } catch (err) {
+                        setTimeout(arguments.callee, 0);
+                    }
+                })();
+            else if (wk)
+                var t = setInterval(function () {
+                    if (/^(loaded|complete)$/.test(d.readyState))
+                        clearInterval(t), run();
+                }, 0);
+        };
+    })();
+
+
+    document.ready(
+        function () {
+            var _Blog = window._Blog || {};
+
+            const getSystemTheme = () => {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            };
+
+            const configDefault = 'light';
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme');
+            const initialTheme = currentTheme || configDefault || getSystemTheme();
+            const isDark = initialTheme === 'dark';
+
+            const updateButtons = (dark) => {
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (dark) {
+                    if (sunBtn) sunBtn.style.display = 'none';
+                    if (moonBtn) moonBtn.style.display = 'inline-block';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'none';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'inline-block';
+                } else {
+                    if (sunBtn) sunBtn.style.display = 'inline-block';
+                    if (moonBtn) moonBtn.style.display = 'none';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'inline-block';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'none';
+                }
+            };
+
+            const updateThemeColor = (dark) => {
+                const themeColor = dark ? '#292a2d' : '#ffffff';
+                const metaTags = document.querySelectorAll('meta[name="theme-color"]');
+                if (metaTags.length > 0) {
+                    // 保留第一个，移除其他的，避免重复
+                    for (let i = 1; i < metaTags.length; i++) {
+                        metaTags[i].remove();
+                    }
+                    metaTags[0].setAttribute('content', themeColor);
+                    metaTags[0].removeAttribute('media');
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.name = 'theme-color';
+                    meta.content = themeColor;
+                    document.head.appendChild(meta);
+                }
+            };
+
+            const applyTheme = (dark) => {
+                const body = document.getElementsByTagName('body')[0];
+                if (dark) {
+                    body.classList.add('dark-theme');
+                } else {
+                    body.classList.remove('dark-theme');
+                }
+                updateButtons(dark);
+                updateThemeColor(dark);
+            };
+
+            // Initial application
+            applyTheme(isDark);
+            if (!currentTheme) {
+                window.localStorage && window.localStorage.setItem('theme', initialTheme);
+            }
+
+            _Blog.toggleTheme = function () {
+                const toggleFunc = (e) => {
+                    // Prevent bubbling if needed, though buttons are distinct now
+                    if (e) e.stopPropagation();
+
+                    const body = document.getElementsByTagName('body')[0];
+                    const isCurrentlyDark = body.classList.contains('dark-theme');
+
+                    if (isCurrentlyDark) {
+                        body.classList.remove('dark-theme');
+                        updateButtons(false);
+                        window.localStorage && window.localStorage.setItem('theme', 'light');
+                    } else {
+                        body.classList.add('dark-theme');
+                        updateButtons(true);
+                        window.localStorage && window.localStorage.setItem('theme', 'dark');
+                    }
+                };
+
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (sunBtn) sunBtn.addEventListener('click', toggleFunc);
+                if (moonBtn) moonBtn.addEventListener('click', toggleFunc);
+                if (mobileSunBtn) mobileSunBtn.addEventListener('click', toggleFunc);
+                if (mobileMoonBtn) mobileMoonBtn.addEventListener('click', toggleFunc);
+            };
+            _Blog.toggleTheme();
+
+            if (window.matchMedia && !configDefault) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    applyTheme(e.matches);
+                    window.localStorage && window.localStorage.setItem('theme', newTheme);
+                });
+            }
+        }
+    );
+</script>
+
+<script>
+    // Reading Progress Component
+    document.addEventListener('DOMContentLoaded', () => {
+        const progressValue = document.querySelector('.reading-value');
+        const progressCircle = document.querySelector('.progress-ring__circle');
+        const container = document.querySelector('.reading-progress-container');
+
+        // Exit if elements don't exist (e.g., not on a post page)
+        if (!progressValue || !progressCircle || !container) {
+            return;
+        }
+
+        // SVG Circle setup
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        function setProgress(percent) {
+            const safePercent = Math.min(100, Math.max(0, percent));
+            progressValue.textContent = `${Math.round(safePercent)}%`;
+            const offset = circumference - (safePercent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        function onScroll() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            if (scrollHeight <= 0) {
+                setProgress(0);
+                return;
+            }
+
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            setProgress(scrollPercent);
+
+            // Show/Hide logic: Show if scrolled more than 100px
+            if (scrollTop > 100) {
+                container.classList.add('show');
+            } else {
+                container.classList.remove('show');
+            }
+        }
+
+        // Initialize
+        onScroll();
+
+        // Listen for scroll events
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Recalculate on resize
+        window.addEventListener('resize', onScroll);
+    });
+</script>
+
+
+
+
+    
+
+    
+<meta name="description" content="本章概要 核心事件：老槐树一夜长百年又枯死；晏无咎讲四十年前的「落星之夜」；沈砚在树下挖出刻着「留」字的残碑，发现自己竟认得那个字。 承接上章：道人说「明天我还来」。 悬念钩子：沈砚在泥地上凭手感写出那个「留」字，一笔不差——他这辈子从没学过这个字。 章首引子 老槐树一夜之间长了一百岁。镇长吴有德说是吉兆，要摆酒。晏无咎站在树下看&amp;hellip;">
+<link rel="canonical" href="https://ireader.eu.org/post/VIau9I/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"第2章：借伞的人","url":"https://ireader.eu.org/post/VIau9I/","description":"本章概要 核心事件：老槐树一夜长百年又枯死；晏无咎讲四十年前的「落星之夜」；沈砚在树下挖出刻着「留」字的残碑，发现自己竟认得那个字。 承接上章：道人说「明天我还来」。 悬念钩子：沈砚在泥地上凭手感写出那个「留」字，一笔不差——他这辈子从没学过这个字。 章首引子 老槐树一夜之间长了一百岁。镇长吴有德说是吉兆，要摆酒。晏无咎站在树下看\u0026hellip;","datePublished":"2026-11-20T22:13:36Z","dateModified":"2026-11-20T22:13:36Z","author":{"@type":"Person","name":"云深未语"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"云深未语"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ireader.eu.org","name":"云深未语","position":1},{"@type":"ListItem","item":"https://ireader.eu.org/post/VIau9I/","name":"第2章：借伞的人","position":2}]}</script>
+<meta property="og:title" content="第2章：借伞的人">
+<meta property="og:description" content="本章概要 核心事件：老槐树一夜长百年又枯死；晏无咎讲四十年前的「落星之夜」；沈砚在树下挖出刻着「留」字的残碑，发现自己竟认得那个字。 承接上章：道人说「明天我还来」。 悬念钩子：沈砚在泥地上凭手感写出那个「留」字，一笔不差——他这辈子从没学过这个字。 章首引子 老槐树一夜之间长了一百岁。镇长吴有德说是吉兆，要摆酒。晏无咎站在树下看&amp;hellip;">
+<meta property="og:url" content="https://ireader.eu.org/post/VIau9I/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="云深未语">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://ireader.eu.org/post/VIau9I/">
+<meta name="twitter:title" content="第2章：借伞的人">
+<meta name="twitter:description" content="本章概要 核心事件：老槐树一夜长百年又枯死；晏无咎讲四十年前的「落星之夜」；沈砚在树下挖出刻着「留」字的残碑，发现自己竟认得那个字。 承接上章：道人说「明天我还来」。 悬念钩子：沈砚在泥地上凭手感写出那个「留」字，一笔不差——他这辈子从没学过这个字。 章首引子 老槐树一夜之间长了一百岁。镇长吴有德说是吉兆，要摆酒。晏无咎站在树下看&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+    <body>
+
+        <script>
+    (function () {
+        const getSystemTheme = () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        };
+
+        const configDefault = 'light';
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || configDefault || getSystemTheme();
+
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        if (!savedTheme) {
+            localStorage.setItem('theme', theme);
+        }
+    })();
+</script>
+<header class="mod-head">
+    <div class="mod-head__left">
+        <div class="mod-head__logo">
+            <a href="/">
+                
+                
+                    <img class="avatar" alt="avatar" src="/images/theme/Clip_20251009_110822.png">
+                
+            </a>
+        </div>
+    </div>
+
+    <div class="mod-head__right">
+        <span>
+            <button id="theme-toggle-sun" class="tiptap-button theme-toggle-sun" aria-label="Switch to dark mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z" fill="currentColor"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z" fill="currentColor"></path>
+                    <path d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z" fill="currentColor"></path>
+                    <path d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z" fill="currentColor"></path>
+                    <path d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z" fill="currentColor"></path>
+                    <path d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z" fill="currentColor"></path>
+                    <path d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z" fill="currentColor"></path>
+                    <path d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z" fill="currentColor"></path>
+                    <path d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z" fill="currentColor"></path>
+                </svg>
+            </button>
+            <button id="theme-toggle-moon" class="tiptap-button theme-toggle-moon" aria-label="Switch to light mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z" fill="currentColor"></path>
+                    <path d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z" fill="currentColor"></path>
+                </svg>
+            </button>
+        </span>
+    </div>
+</header>
+<!-- <a href="#" id="back-to-top" style="display: inline;"> ^ </a> -->
+
+            <article class="mod-post mod-post__type-post">
+                <header>
+                    <h1 class="mod-post__title">
+                        第2章：借伞的人
+                    </h1>
+                </header>
+
+                <div class="mod-post__meta">
+                    <time datetime="2026-11-20">
+                        2026-11-20
+                    </time> • 6 分钟阅读 •
+                        
+                        
+                        
+                </div>
+
+
+
+                <div class="mod-post__entry wzulli">
+                    
+                            <h2 id="heading">本章概要</h2>
+<ul>
+<li><strong>核心事件</strong>：老槐树一夜长百年又枯死；晏无咎讲四十年前的「落星之夜」；沈砚在树下挖出刻着「留」字的残碑，发现自己竟认得那个字。</li>
+<li><strong>承接上章</strong>：道人说「明天我还来」。</li>
+<li><strong>悬念钩子</strong>：沈砚在泥地上凭手感写出那个「留」字，一笔不差——他这辈子从没学过这个字。</li>
+</ul>
+<hr />
+<h2 id="heading-1">章首引子</h2>
+<blockquote>
+<p>老槐树一夜之间长了一百岁。镇长吴有德说是吉兆，要摆酒。晏无咎站在树下看了很久，说：「树没病。是时候病了。」镇长没听懂，笑着让人去搬酒坛。沈砚听懂了半个字——他看见那棵树在往回缩。</p>
+</blockquote>
+<hr />
+<h2 id="heading-2">正文</h2>
+<p>第二天天没亮，沈砚就醒了。</p>
+<p>雨停了，屋檐还在滴水。他开了门，门口的石阶上坐着一个人。</p>
+<p>青衫，背影笔直，手里捧着一卷东西。听见门响，那人回过头来，眼角的疤先动了动。</p>
+<p>「早。」晏无咎说。</p>
+<p>沈砚站在门槛里，看了他一会儿。「你在这儿坐了多久？」</p>
+<p>「不久。」晏无咎站起来，拍了拍衣摆，「你们镇的鸡叫得早。」</p>
+<p>他把手里那卷东西递过来。是一卷书，用油布裹着，拆开，纸已经泡得发胀，边角粘成一团，勉强能看出封皮上两个褪色的字：剑谱。</p>
+<p>「修得好吗？」他问。</p>
+<p>沈砚接过来，翻了两页。纸是上好的竹纸，泡过水，纤维散了，一碰就掉渣。这种书最难修——不是缺页，是整本书都软了，得像给病人接骨一样，一页一页托起来。</p>
+<p>「能修。」他说，「费时辰。」</p>
+<p>「多少？」</p>
+<p>「一个月。」</p>
+<p>晏无咎点点头，像早就料到。「我等你一个月。」</p>
+<p>沈砚把书翻到中间。泡得最狠的那几页，纸已经黏成一块，边角上还能看见朱笔的批注，字很小，写的是「此式不可用」「此式伤己」。批注的笔迹他认得——不是认得写字的人，是认得那种写法：起笔重，收笔轻，跟铺子里那本《沧澜志》上的官样字完全两路。</p>
+<p>「这剑谱是你师门的？」他问。</p>
+<p>晏无咎看了他一眼，笑意淡了些。「算是。」</p>
+<p>「批注的人死了？」</p>
+<p>「死了很久了。」</p>
+<p>沈砚没再问，把书合上，用油布重新裹好。「一个月后你来取。纸钱另算。」</p>
+<p>「行。」晏无咎说，「不过我这个人，喜欢先付。」</p>
+<p>他从袖子里摸出一小锭银子，放在案上。沈砚看了一眼，没动。那银子成色很足，够他修十本书。</p>
+<p>「太多了。」</p>
+<p>「多的算我问路的钱。」</p>
+<p>沈砚把书放到案上，回头看他。「你昨天说，我死过一次。」</p>
+<p>「嗯。」</p>
+<p>「今天能说清楚了吗？」</p>
+<p>晏无咎没答，抬手指了指街东头。「先去看树。」</p>
+<p>街东头已经围满了人。</p>
+<p>老槐树在镇子东口，树龄比镇子还老，镇志上写着「唐时物」。沈砚从小在树下乘凉，知道它有多粗——三个人合抱，抱不过来。可今天早上，它粗了不止一圈。</p>
+<p>不，不是一圈。</p>
+<p>沈砚站在人群外，仰头看。树干胀得像一口灌满了水的皮囊，树皮裂开一道道口子，裂口里露出新肉，白生生的，还在往外渗汁。树冠却枯了，一半的枝子耷拉着，叶子卷成灰褐色，风一吹，簌簌往下掉。</p>
+<p>一半新，一半死。</p>
+<p>「昨夜三更，我起来解手，就听见咔嚓一声。」卖豆腐的刘婆子比划着，「跟打雷似的。我出来一看，树就……就长成这样了。」</p>
+<p>「长了多少？」有人问。</p>
+<p>「我量了。」吴镇长挤进来，手里捏着一根麻绳，「原先三抱，现在五抱半。一夜，两抱半。」</p>
+<p>人群里嗡嗡地响。有人说是树成精了，有人说是地气动了，还有人说今年麦子割三茬，树也赶着长，是丰年的兆头。</p>
+<p>「我小时候，它长过一回。」人群后头，孙婆子拄着拐杖，声音哑得像砂纸，「那年我七岁。也是这么一夜，粗了一圈。第二年就旱了，河都见了底。」</p>
+<p>「孙婆婆，您记错了吧。」吴镇长笑着摆手。</p>
+<p>「我记性不好，」孙婆子说，「可我记得那年的河。」</p>
+<p>她说这话时，眼睛一直盯着树根。</p>
+<p>沈砚顺着她的目光看过去，看见树根处的土裂着，裂缝里黑黢黢的，像有什么东西缩在底下。</p>
+<p>吴镇长搓着手，笑得脸上起褶：「吉兆，吉兆。我这就让人去搬酒。」</p>
+<p>「不是吉兆。」</p>
+<p>声音不大，人群却静了一瞬。</p>
+<p>晏无咎站在树下，伸手按在树皮上，按了很久。他收回手，指腹上沾着一点白色的汁液。</p>
+<p>「树没病。」他说，「是时候病了。」</p>
+<p>吴镇长眨眨眼：「道长这话……」</p>
+<p>「这棵树，一夜里过了一百年。」晏无咎说，「它不是在长，是在赶。赶着把没活完的日子活完。你们看它的根。」</p>
+<p>众人低头。树根处的土裂开了，裂缝里露出几截黑褐色的根须，干得像炭。</p>
+<p>「根先死，干后长。」晏无咎说，「顺序反了。」</p>
+<p>沈砚站在人群最外面，看着那棵树。</p>
+<p>他忽然觉得眼睛发花。</p>
+<p>不是头晕。是像有人在他眼前翻了一页书——翻得很快，快到只看见一道影。树影晃了晃，然后他看见了另一幅画面。</p>
+<p>树还是那棵树，可只有一人高。树干细，枝子嫩，叶子是鲜绿的。树下蹲着一个人，穿一件洗得发白的道袍，背对着他，正在往土里埋什么东西。那人埋得很仔细，埋完了，用手把土拍平，又抓了一把落叶盖上去。</p>
+<p>沈砚想看清那人的脸。</p>
+<p>画面又翻了一页。</p>
+<p>树回来了，五抱半，一树枯叶。</p>
+<p>他眨眨眼，眼前只有那棵半死不活的老槐树，和一圈交头接耳的人。没有人注意到他。</p>
+<p>「道长，」吴镇长陪着笑，「那这树……砍不砍？」</p>
+<p>「不砍。」晏无咎说，「留着。它还有用。」</p>
+<p>他转身往人群外走，走过沈砚身边时，脚步没停，声音很低：</p>
+<p>「你也看见了。」</p>
+<p>沈砚没应。</p>
+<p>傍晚，吴镇长在镇口摆了三桌酒，请晏无咎上座。</p>
+<p>晏无咎没坐主位，拣了个靠墙的位置坐下，筷子动得少，酒喝得慢。席上人问他从哪来，他说东边；问他往哪去，他说北边；问他修行多少年，他笑了笑，说记不清了。</p>
+<p>酒过三巡，吴镇长凑过来：「道长见多识广，给我们讲讲外面的事吧。」</p>
+<p>晏无咎放下筷子，想了想。</p>
+<p>「四十年前，」他说，「玄都出过一件事。」</p>
+<p>席上安静下来。</p>
+<p>「那年秋天，天上掉下来一道火。」他慢慢说，「不是流星。流星是斜着划过去的，那道火是直的，从天上一直垂到城墙上，把半面天都烧红了。火里有人。」</p>
+<p>「人？」刘婆子手里的筷子停在半空。</p>
+<p>「两个人。在天上打。」晏无咎说，「打了半夜。第二天早上，玄都东城塌了三条街，西城的钟楼歪了三尺，城外的河改了道。死了很多人。」</p>
+<p>「后来呢？」</p>
+<p>「后来，」晏无咎端起酒碗，抿了一口，「有个剑修，一个人挡在城门口。他把那道火接了下来。城保住了半个。」</p>
+<p>「那人呢？」</p>
+<p>「死了。」晏无咎说，「都这么说。」</p>
+<p>吴镇长唏嘘了一阵，又问：「那道火，到底是什么？」</p>
+<p>「不知道。」晏无咎放下碗，「只知道从那以后，玄都的更漏就没准过。一天里，有时长，有时短。年头久了，就没人提了。」</p>
+<p>沈砚坐在下首，一直没说话。</p>
+<p>他注意到老周。</p>
+<p>老周端着酒碗，手在抖。碗里的酒晃出一圈一圈的纹，洒了半襟。他一直盯着晏无咎，嘴唇动了几回，到底没出声。</p>
+<p>散席时，老周拉住沈砚的袖子。</p>
+<p>「那道长说的剑修，」老周的声音压得极低，「我见过。」</p>
+<p>「你今年多大？」</p>
+<p>「五十六。」</p>
+<p>「四十年前你十六。」沈砚说，「在玄都？」</p>
+<p>老周张了张嘴，忽然松开手，往后退了一步。「我喝多了。」他说，「喝多了。」</p>
+<p>他转身就走，走得很急，撞翻了一条板凳也没回头。</p>
+<p>夜里，晏无咎宿在书铺后院。</p>
+<p>沈砚给他铺了张竹榻，抱来一床旧被。后院小，一棵石榴树，一口水缸，墙角堆着劈好的柴。月亮出来了，照得缸里的水发白。</p>
+<p>「三个问题，你还没问。」晏无咎坐在榻边，解了外衫，搭在膝上。</p>
+<p>「问了你会答？」</p>
+<p>「看问什么。」</p>
+<p>沈砚靠着门框，想了很久，只问了两个。</p>
+<p>「你从哪里来？」</p>
+<p>「东边。」</p>
+<p>「往哪里去？」</p>
+<p>「北边。」</p>
+<p>「这不算答。」</p>
+<p>「算。」晏无咎说，「我说的是真话。真话不一定有用。」</p>
+<p>沈砚沉默了一会儿。「第三个问题，我明天再问。」</p>
+<p>晏无咎笑了一下。「好。那我问你一个。」</p>
+<p>「你说。」</p>
+<p>「你是不是常做一个梦？」晏无咎看着他，「雨，灯，一只很冷的手。」</p>
+<p>沈砚的后背贴紧了门框。</p>
+<p>这件事他没跟任何人说过。沈氏在世时也不知道。他只在册子上写，写得极简，怕写多了，那梦就会顺着字爬出来。</p>
+<p>「你怎么知道？」</p>
+<p>「猜的。」晏无咎说，「你指尖的茧，是抄经抄出来的。可你抄经的时候，总把左手压在纸上，压得很紧。抄经不用那么用力。」他顿了顿，「除非你怕纸被风吹走。或者，怕梦里那只手把纸抽走。」</p>
+<p>沈砚没说话。</p>
+<p>后院很静。石榴树的影子落在地上，被风吹得轻轻晃。</p>
+<p>「睡吧。」晏无咎躺下去，背对着他，「明天还有事。」</p>
+<p>沈砚回到前屋，吹了灯，躺下。</p>
+<p>他睡不着。</p>
+<p>翻来覆去到后半夜，他披衣起来，推门出去。街上没有人，月光很亮。他一路走到镇东口。</p>
+<p>老槐树站在月光里，一半白，一半黑。白天人群踩出的脚印还在，乱七八糟地印在泥地上。</p>
+<p>沈砚走到树下，蹲下来。</p>
+<p>白天他看见的那个位置，就在树根东侧两步远，落叶堆得比别处厚。他伸手拨开落叶，土是松的。</p>
+<p>他没有铲子，就用一块碎瓦片挖。</p>
+<p>挖了不到一尺，瓦片碰到一样硬东西。</p>
+<p>他用手把土拨开。</p>
+<p>是一块碑。不大，一尺见方，青石，断了一角。碑面被土浸得发黑，他用袖子擦了半天，才擦出字来。</p>
+<p>一个字。</p>
+<p>「留。」</p>
+<p>沈砚蹲在那里，看着那个字。</p>
+<p>他认得它。</p>
+<p>不是「好像见过」的那种认得。是手指认得——他看得见自己写这个字的样子：先写左边的「卯」，再写右边的「田」，横平竖直，收笔的时候要顿一下，顿得比别的字重。</p>
+<p>他从来没学过这个字。</p>
+<p>可他伸出手，在泥地上，一笔一划地写了出来。</p>
+<p>一笔不差。</p>
+<p>他盯着自己的手看了很久。手是干净的，指甲缝里嵌着泥。可刚才写那个字的时候，他分明觉得，有一只手覆在他手背上，跟着他一起动。</p>
+<p>他把碑抱起来。碑很轻，轻得不像石头。</p>
+<hr />
+<h2 id="heading-3">章节备注</h2>
+<ul>
+<li>本章悬念：沈砚认得「留」字并能默写；树下一闪而过的画面里埋碑的道人是谁；晏无咎如何知道他的梦。</li>
+<li>下章预告：沈砚带着残碑上山，青芜观的门为他开着。</li>
+<li>伏笔标记：老槐树「根先死、干后长」（时河倒错）；落星之夜「火里两个人」；老周听见「剑修」时手抖；埋碑道人的道袍（三十年前的青芜观）。</li>
+<li>新名词登记：青芜镇老槐树（唐时物，一夜长两抱半）；《落星之夜》（四十年前玄都大灾）；残碑「留」字；吴有德（镇长）；刘婆子（卖豆腐）。</li>
+</ul>
+
+                </div>
+
+            </article>
+
+
+            
+                
+	<div class="mod-post__foot">
+	 文章标签: 
+     
+     </br>
+	</div>
+
+                    
+
+                        <div class="mod-post__poster">
+                        </div>
+
+                        </div>
+
+                        
+                            
+<br>
+
+<div style="margin-bottom: 10px;">
+    上一篇 : <a href="/post/cSFqkO/">第3章：青芜观</a>
+</div>
+
+
+
+<div style="margin-bottom: 40px;">
+    下一篇 : <a href="/post/1L4XpY/">第1章：雨夜来客</a>
+</div>
+
+
+</div>	
+
+                                
+
+                                    
+                                        <!-- Reading Progress Component -->
+<div class="reading-progress-container">
+  <span class="reading-label">阅读进度</span>
+  <span class="reading-value">0%</span>
+  <svg class="progress-ring" viewBox="0 0 24 24">
+    <!-- Background Circle -->
+    <circle class="progress-ring__circle-bg" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+    <!-- Progress Circle -->
+    <circle class="progress-ring__circle" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+  </svg>
+</div>
+                                            <footer id="footer" class="footer">
+    <nav>
+        
+            
+                    <a class="menu-item" href="/">
+                        首页
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/post">
+                        博客
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/memos">
+                        闪念
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/archives">
+                        归档
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/tags">
+                        标签
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/links">
+                        友链
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="https://ireader.eu.org/post/about">
+                        关于
+                    </a>
+                    
+    </nav>
+
+    <div class="Copyright">Copyright &copy; 2026 <a href="https://ireader.eu.org">
+                云深未语
+            </a></div>
+
+    <div class="index_footer">
+        <a href="https://icp.gov.moe/?keyword=20260468" target="_blank">萌ICP备20260468号</a> ·
+            <a class="rss" href="/feed.xml" target="_blank" rel="noopener noreferrer">
+                <i class="ri-rss-line"></i> RSS
+            </a>
+    </div>
+</footer>
+
+
+
+
+    <script>console.log("\n%c ✦ Gridea Pro v1.3.0-beta.2 %c · Theme: amore v1.1.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+    </html>

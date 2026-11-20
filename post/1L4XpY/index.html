@@ -1,0 +1,587 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0, width=device-width" />
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no, email=no, address=no">
+
+    <meta name="generator" content="Gridea Pro 1.3.0-beta.2">
+    <title>第1章：雨夜来客 | 云深未语</title>
+
+    
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#292a2d" media="(prefers-color-scheme: dark)">
+
+    
+    <link rel="shortcut icon" href="/images/theme/月下山川与书卷图标.png">
+<link rel="stylesheet" href="/styles/main.min.css">
+
+    
+    <style>:root{--accent-color:#28df99;}</style>
+    
+
+    <script>
+    // 自动为所有 target="_blank" 的链接添加 rel="noopener noreferrer"
+    document.addEventListener('DOMContentLoaded', function() {
+        var links = document.querySelectorAll('a[target="_blank"]');
+        links.forEach(function(link) {
+            var rel = link.getAttribute('rel') || '';
+            if (rel.indexOf('noopener') === -1) {
+                rel += ' noopener';
+            }
+            if (rel.indexOf('noreferrer') === -1) {
+                rel += ' noreferrer';
+            }
+            link.setAttribute('rel', rel.trim());
+        });
+    });
+</script>
+
+
+
+    <script>
+    // declaraction of document.ready() function.
+    (function () {
+        var ie = !!(window.attachEvent && !window.opera);
+        var wk = /webkit\/(\d+)/i.test(navigator.userAgent) && (RegExp.$1 < 525);
+        var fn = [];
+        var run = function () {
+            for (var i = 0; i < fn.length; i++) fn[i]();
+        };
+        var d = document;
+        d.ready = function (f) {
+            if (!ie && !wk && d.addEventListener)
+                return d.addEventListener('DOMContentLoaded', f, false);
+            if (fn.push(f) > 1) return;
+            if (ie)
+                (function () {
+                    try {
+                        d.documentElement.doScroll('left');
+                        run();
+                    } catch (err) {
+                        setTimeout(arguments.callee, 0);
+                    }
+                })();
+            else if (wk)
+                var t = setInterval(function () {
+                    if (/^(loaded|complete)$/.test(d.readyState))
+                        clearInterval(t), run();
+                }, 0);
+        };
+    })();
+
+
+    document.ready(
+        function () {
+            var _Blog = window._Blog || {};
+
+            const getSystemTheme = () => {
+                if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    return 'dark';
+                }
+                return 'light';
+            };
+
+            const configDefault = 'light';
+            const currentTheme = window.localStorage && window.localStorage.getItem('theme');
+            const initialTheme = currentTheme || configDefault || getSystemTheme();
+            const isDark = initialTheme === 'dark';
+
+            const updateButtons = (dark) => {
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (dark) {
+                    if (sunBtn) sunBtn.style.display = 'none';
+                    if (moonBtn) moonBtn.style.display = 'inline-block';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'none';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'inline-block';
+                } else {
+                    if (sunBtn) sunBtn.style.display = 'inline-block';
+                    if (moonBtn) moonBtn.style.display = 'none';
+                    if (mobileSunBtn) mobileSunBtn.style.display = 'inline-block';
+                    if (mobileMoonBtn) mobileMoonBtn.style.display = 'none';
+                }
+            };
+
+            const updateThemeColor = (dark) => {
+                const themeColor = dark ? '#292a2d' : '#ffffff';
+                const metaTags = document.querySelectorAll('meta[name="theme-color"]');
+                if (metaTags.length > 0) {
+                    // 保留第一个，移除其他的，避免重复
+                    for (let i = 1; i < metaTags.length; i++) {
+                        metaTags[i].remove();
+                    }
+                    metaTags[0].setAttribute('content', themeColor);
+                    metaTags[0].removeAttribute('media');
+                } else {
+                    const meta = document.createElement('meta');
+                    meta.name = 'theme-color';
+                    meta.content = themeColor;
+                    document.head.appendChild(meta);
+                }
+            };
+
+            const applyTheme = (dark) => {
+                const body = document.getElementsByTagName('body')[0];
+                if (dark) {
+                    body.classList.add('dark-theme');
+                } else {
+                    body.classList.remove('dark-theme');
+                }
+                updateButtons(dark);
+                updateThemeColor(dark);
+            };
+
+            // Initial application
+            applyTheme(isDark);
+            if (!currentTheme) {
+                window.localStorage && window.localStorage.setItem('theme', initialTheme);
+            }
+
+            _Blog.toggleTheme = function () {
+                const toggleFunc = (e) => {
+                    // Prevent bubbling if needed, though buttons are distinct now
+                    if (e) e.stopPropagation();
+
+                    const body = document.getElementsByTagName('body')[0];
+                    const isCurrentlyDark = body.classList.contains('dark-theme');
+
+                    if (isCurrentlyDark) {
+                        body.classList.remove('dark-theme');
+                        updateButtons(false);
+                        window.localStorage && window.localStorage.setItem('theme', 'light');
+                    } else {
+                        body.classList.add('dark-theme');
+                        updateButtons(true);
+                        window.localStorage && window.localStorage.setItem('theme', 'dark');
+                    }
+                };
+
+                const sunBtn = document.getElementById("theme-toggle-sun");
+                const moonBtn = document.getElementById("theme-toggle-moon");
+                const mobileSunBtn = document.getElementById("mobile-theme-toggle-sun");
+                const mobileMoonBtn = document.getElementById("mobile-theme-toggle-moon");
+
+                if (sunBtn) sunBtn.addEventListener('click', toggleFunc);
+                if (moonBtn) moonBtn.addEventListener('click', toggleFunc);
+                if (mobileSunBtn) mobileSunBtn.addEventListener('click', toggleFunc);
+                if (mobileMoonBtn) mobileMoonBtn.addEventListener('click', toggleFunc);
+            };
+            _Blog.toggleTheme();
+
+            if (window.matchMedia && !configDefault) {
+                window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+                    const newTheme = e.matches ? 'dark' : 'light';
+                    applyTheme(e.matches);
+                    window.localStorage && window.localStorage.setItem('theme', newTheme);
+                });
+            }
+        }
+    );
+</script>
+
+<script>
+    // Reading Progress Component
+    document.addEventListener('DOMContentLoaded', () => {
+        const progressValue = document.querySelector('.reading-value');
+        const progressCircle = document.querySelector('.progress-ring__circle');
+        const container = document.querySelector('.reading-progress-container');
+
+        // Exit if elements don't exist (e.g., not on a post page)
+        if (!progressValue || !progressCircle || !container) {
+            return;
+        }
+
+        // SVG Circle setup
+        const radius = progressCircle.r.baseVal.value;
+        const circumference = 2 * Math.PI * radius;
+
+        progressCircle.style.strokeDasharray = `${circumference} ${circumference}`;
+        progressCircle.style.strokeDashoffset = circumference;
+
+        function setProgress(percent) {
+            const safePercent = Math.min(100, Math.max(0, percent));
+            progressValue.textContent = `${Math.round(safePercent)}%`;
+            const offset = circumference - (safePercent / 100) * circumference;
+            progressCircle.style.strokeDashoffset = offset;
+        }
+
+        function onScroll() {
+            const scrollTop = window.scrollY || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+
+            if (scrollHeight <= 0) {
+                setProgress(0);
+                return;
+            }
+
+            const scrollPercent = (scrollTop / scrollHeight) * 100;
+            setProgress(scrollPercent);
+
+            // Show/Hide logic: Show if scrolled more than 100px
+            if (scrollTop > 100) {
+                container.classList.add('show');
+            } else {
+                container.classList.remove('show');
+            }
+        }
+
+        // Initialize
+        onScroll();
+
+        // Listen for scroll events
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Recalculate on resize
+        window.addEventListener('resize', onScroll);
+    });
+</script>
+
+
+
+
+    
+
+    
+<meta name="description" content="本章概要 核心事件：青芜镇更漏出错，三更只响两声；深夜一名青衫道人上门借雨，对沈砚说「你死过一次」。 承接上章：—（全书开篇） 悬念钩子：道人不请自入，已在屋里喝茶；沈砚左手食指的旧疤突然发烫。 章首引子 青芜镇的人都说，沈家那小子命硬。三岁落井，井水只到他腰；七岁被疯马撞，马断了腿；十二岁山塌了半条街，他正好出门买纸。镇上老人&amp;hellip;">
+<link rel="canonical" href="https://ireader.eu.org/post/1L4XpY/">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","headline":"第1章：雨夜来客","url":"https://ireader.eu.org/post/1L4XpY/","description":"本章概要 核心事件：青芜镇更漏出错，三更只响两声；深夜一名青衫道人上门借雨，对沈砚说「你死过一次」。 承接上章：—（全书开篇） 悬念钩子：道人不请自入，已在屋里喝茶；沈砚左手食指的旧疤突然发烫。 章首引子 青芜镇的人都说，沈家那小子命硬。三岁落井，井水只到他腰；七岁被疯马撞，马断了腿；十二岁山塌了半条街，他正好出门买纸。镇上老人\u0026hellip;","datePublished":"2026-11-20T22:12:28Z","dateModified":"2026-11-20T22:12:28Z","author":{"@type":"Person","name":"云深未语"},"publisher":{"@type":"Organization","logo":{"@type":"ImageObject","url":"/images/avatar.png"},"name":"云深未语"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","item":"https://ireader.eu.org","name":"云深未语","position":1},{"@type":"ListItem","item":"https://ireader.eu.org/post/1L4XpY/","name":"第1章：雨夜来客","position":2}]}</script>
+<meta property="og:title" content="第1章：雨夜来客">
+<meta property="og:description" content="本章概要 核心事件：青芜镇更漏出错，三更只响两声；深夜一名青衫道人上门借雨，对沈砚说「你死过一次」。 承接上章：—（全书开篇） 悬念钩子：道人不请自入，已在屋里喝茶；沈砚左手食指的旧疤突然发烫。 章首引子 青芜镇的人都说，沈家那小子命硬。三岁落井，井水只到他腰；七岁被疯马撞，马断了腿；十二岁山塌了半条街，他正好出门买纸。镇上老人&amp;hellip;">
+<meta property="og:url" content="https://ireader.eu.org/post/1L4XpY/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="云深未语">
+<meta property="og:image" content="/images/avatar.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://ireader.eu.org/post/1L4XpY/">
+<meta name="twitter:title" content="第1章：雨夜来客">
+<meta name="twitter:description" content="本章概要 核心事件：青芜镇更漏出错，三更只响两声；深夜一名青衫道人上门借雨，对沈砚说「你死过一次」。 承接上章：—（全书开篇） 悬念钩子：道人不请自入，已在屋里喝茶；沈砚左手食指的旧疤突然发烫。 章首引子 青芜镇的人都说，沈家那小子命硬。三岁落井，井水只到他腰；七岁被疯马撞，马断了腿；十二岁山塌了半条街，他正好出门买纸。镇上老人&amp;hellip;">
+<meta name="twitter:image" content="/images/avatar.png">
+</head>
+
+    <body>
+
+        <script>
+    (function () {
+        const getSystemTheme = () => {
+            if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                return 'dark';
+            }
+            return 'light';
+        };
+
+        const configDefault = 'light';
+        const savedTheme = localStorage.getItem('theme');
+        const theme = savedTheme || configDefault || getSystemTheme();
+
+        if (theme === 'dark') {
+            document.body.classList.add('dark-theme');
+        }
+
+        if (!savedTheme) {
+            localStorage.setItem('theme', theme);
+        }
+    })();
+</script>
+<header class="mod-head">
+    <div class="mod-head__left">
+        <div class="mod-head__logo">
+            <a href="/">
+                
+                
+                    <img class="avatar" alt="avatar" src="/images/theme/Clip_20251009_110822.png">
+                
+            </a>
+        </div>
+    </div>
+
+    <div class="mod-head__right">
+        <span>
+            <button id="theme-toggle-sun" class="tiptap-button theme-toggle-sun" aria-label="Switch to dark mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 1C12.5523 1 13 1.44772 13 2V4C13 4.55228 12.5523 5 12 5C11.4477 5 11 4.55228 11 4V2C11 1.44772 11.4477 1 12 1Z" fill="currentColor"></path>
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M7 12C7 9.23858 9.23858 7 12 7C14.7614 7 17 9.23858 17 12C17 14.7614 14.7614 17 12 17C9.23858 17 7 14.7614 7 12ZM12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9Z" fill="currentColor"></path>
+                    <path d="M13 20C13 19.4477 12.5523 19 12 19C11.4477 19 11 19.4477 11 20V22C11 22.5523 11.4477 23 12 23C12.5523 23 13 22.5523 13 22V20Z" fill="currentColor"></path>
+                    <path d="M4.22282 4.22289C4.61335 3.83236 5.24651 3.83236 5.63704 4.22289L7.04704 5.63289C7.43756 6.02341 7.43756 6.65658 7.04704 7.0471C6.65651 7.43762 6.02335 7.43762 5.63283 7.0471L4.22282 5.6371C3.8323 5.24658 3.8323 4.61341 4.22282 4.22289Z" fill="currentColor"></path>
+                    <path d="M18.367 16.9529C17.9765 16.5623 17.3433 16.5623 16.9528 16.9529C16.5623 17.3434 16.5623 17.9766 16.9528 18.3671L18.3628 19.7771C18.7533 20.1676 19.3865 20.1676 19.777 19.7771C20.1675 19.3866 20.1675 18.7534 19.777 18.3629L18.367 16.9529Z" fill="currentColor"></path>
+                    <path d="M1 12C1 11.4477 1.44772 11 2 11H4C4.55228 11 5 11.4477 5 12C5 12.5523 4.55228 13 4 13H2C1.44772 13 1 12.5523 1 12Z" fill="currentColor"></path>
+                    <path d="M20 11C19.4477 11 19 11.4477 19 12C19 12.5523 19.4477 13 20 13H22C22.5523 13 23 12.5523 23 12C23 11.4477 22.5523 11 22 11H20Z" fill="currentColor"></path>
+                    <path d="M7.04704 16.9529C7.43756 17.3434 7.43756 17.9766 7.04704 18.3671L5.63704 19.7771C5.24651 20.1676 4.61335 20.1676 4.22282 19.7771C3.8323 19.3866 3.8323 18.7534 4.22283 18.3629L5.63283 16.9529C6.02335 16.5623 6.65651 16.5623 7.04704 16.9529Z" fill="currentColor"></path>
+                    <path d="M19.777 5.6371C20.1675 5.24657 20.1675 4.61341 19.777 4.22289C19.3865 3.83236 18.7533 3.83236 18.3628 4.22289L16.9528 5.63289C16.5623 6.02341 16.5623 6.65658 16.9528 7.0471C17.3433 7.43762 17.9765 7.43762 18.367 7.0471L19.777 5.6371Z" fill="currentColor"></path>
+                </svg>
+            </button>
+            <button id="theme-toggle-moon" class="tiptap-button theme-toggle-moon" aria-label="Switch to light mode">
+                <svg width="18" height="18" class="tiptap-button-icon" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C10.0222 2 8.08879 2.58649 6.4443 3.6853C4.79981 4.78412 3.51809 6.3459 2.76121 8.17317C2.00433 10.0004 1.8063 12.0111 2.19215 13.9509C2.578 15.8907 3.53041 17.6725 4.92894 19.0711C6.32746 20.4696 8.10929 21.422 10.0491 21.8079C11.9889 22.1937 13.9996 21.9957 15.8268 21.2388C17.6541 20.4819 19.2159 19.2002 20.3147 17.5557C21.4135 15.9112 22 13.9778 22 12C22 11.5955 21.7564 11.2309 21.3827 11.0761C21.009 10.9213 20.5789 11.0069 20.2929 11.2929C19.287 12.2988 17.9226 12.864 16.5 12.864C15.0774 12.864 13.713 12.2988 12.7071 11.2929C11.7012 10.287 11.136 8.92261 11.136 7.5C11.136 6.07739 11.7012 4.71304 12.7071 3.70711C12.9931 3.42111 13.0787 2.99099 12.9239 2.61732C12.7691 2.24364 12.4045 2 12 2ZM7.55544 5.34824C8.27036 4.87055 9.05353 4.51389 9.87357 4.28778C9.39271 5.27979 9.13604 6.37666 9.13604 7.5C9.13604 9.45304 9.91189 11.3261 11.2929 12.7071C12.6739 14.0881 14.547 14.864 16.5 14.864C17.6233 14.864 18.7202 14.6073 19.7122 14.1264C19.4861 14.9465 19.1295 15.7296 18.6518 16.4446C17.7727 17.7602 16.5233 18.7855 15.0615 19.391C13.5997 19.9965 11.9911 20.155 10.4393 19.8463C8.88743 19.5376 7.46197 18.7757 6.34315 17.6569C5.21447 16.538 4.4624 15.1126 4.15372 13.5607C3.84504 12.0089 4.00347 10.4003 4.60897 8.93853C5.21447 7.47672 6.23985 6.22729 7.55544 5.34824Z" fill="currentColor"></path>
+                    <path d="M19 2C19.5523 2 20 2.44772 20 3V4H21C21.5523 4 22 4.44772 22 5C22 5.55228 21.5523 6 21 6H20V7C20 7.55228 19.5523 8 19 8C18.4477 8 18 7.55228 18 7V6H17C16.4477 6 16 5.55228 16 5C16 4.44772 16.4477 4 17 4H18V3C18 2.44772 18.4477 2 19 2Z" fill="currentColor"></path>
+                </svg>
+            </button>
+        </span>
+    </div>
+</header>
+<!-- <a href="#" id="back-to-top" style="display: inline;"> ^ </a> -->
+
+            <article class="mod-post mod-post__type-post">
+                <header>
+                    <h1 class="mod-post__title">
+                        第1章：雨夜来客
+                    </h1>
+                </header>
+
+                <div class="mod-post__meta">
+                    <time datetime="2026-11-20">
+                        2026-11-20
+                    </time> • 6 分钟阅读 •
+                        
+                            <a href="/category/default/" class="mod-post__category">
+                                默认分类
+                            </a>
+                            
+                        
+                         • 
+                        
+                            <a href="/tag/xiao-shuo/">
+                                小说
+                            </a>
+                            
+                                    
+                </div>
+
+
+
+                <div class="mod-post__entry wzulli">
+                    
+                            <h2 id="heading">本章概要</h2>
+<ul>
+<li><strong>核心事件</strong>：青芜镇更漏出错，三更只响两声；深夜一名青衫道人上门借雨，对沈砚说「你死过一次」。</li>
+<li><strong>承接上章</strong>：—（全书开篇）</li>
+<li><strong>悬念钩子</strong>：道人不请自入，已在屋里喝茶；沈砚左手食指的旧疤突然发烫。</li>
+</ul>
+<hr />
+<h2 id="heading-1">章首引子</h2>
+<blockquote>
+<p>青芜镇的人都说，沈家那小子命硬。三岁落井，井水只到他腰；七岁被疯马撞，马断了腿；十二岁山塌了半条街，他正好出门买纸。镇上老人背地里说，命太硬的人，是拿别人的命换来的。沈砚从不接这话。他只管修他的书。直到那个雨夜，一个陌生人站在铺子门口，说：「你死过一次。」</p>
+</blockquote>
+<hr />
+<h2 id="heading-2">正文</h2>
+<p>浆糊要趁热。</p>
+<p>沈砚用竹片挑起一点，沿着纸背的裂缝抹过去，指腹压住，等它吃进纤维里。这册《沧澜志》是城南王屠户送来的，前三十页被老鼠啃成了锯齿，后十页叫人撕去引火，中间还夹着一张不知哪年的当票。他先把当票揭下来，展平，压在镇纸底下——东西是别人的，得还给人家。当票上写着「青芜镇东街，周氏，铜簪一支，当钱三十文」，字迹淡得像一层灰。</p>
+<p>铺子外头在下雨。</p>
+<p>雨点打在瓦上，起初是散的，后来连成一片。屋檐下挂着一串水，风一过就断，断了又接上。沈砚修书修了十一年，最怕这种天。纸吸潮，浆糊不干，一个夜里修不了几页。</p>
+<p>他把竹片搁进清水碗里，起身去拨灯芯。</p>
+<p>铺子是养母沈氏留下的。一间门面，两排架子，后头一张案子，再后头是他睡觉的小屋。沈氏去年冬天走的，走之前把铺子的钥匙塞给他，说：「书比人长久，你别亏待它们。」他应了一声。那时候他还不明白这句话的分量。</p>
+<p>更楼在镇东头，一座两层的旧木楼，楼上搁着一只铜漏壶。漏壶是前朝的东西，漏嘴堵过三回，老周每回都骂，骂完还是拿竹签去捅。镇上人靠它过日子：卯时开市，酉时收摊，三更一过，谁家孩子哭都得挨骂。</p>
+<p>今夜老周从门前过，梆子敲了两下，停了停，又敲了一下。</p>
+<p>沈砚抬起头。</p>
+<p>三更，是四下。</p>
+<p>他放下手里的书，走到门边。老周也站在雨里，把梆子举在半空，像举着一件不属于自己的东西。两个人数了两遍。</p>
+<p>「漏壶快了。」老周说，声音被雨压得很低，「我出门的时候才二更末，走到你这儿就三更了。一炷香的路，走成了两炷。」他抹了一把脸，「邪门。」</p>
+<p>「明天找人看看。」沈砚说。</p>
+<p>「看什么？」老周把梆子别到腰上，「漏壶是我爷爷那辈传下来的，毛病我都清楚。它不是快了。它是……」他想了想，没想出词，摆摆手。</p>
+<p>「今年开春就不对。」他压低声音，「王屠户家那口猪，正月下的崽，三月就赶上他婆娘腰高了。地里麦子割了一茬，又长一茬，割了三茬。镇上老人说，这是丰年。丰年哪有这么丰的？」</p>
+<p>沈砚没说话。他修书的时候见过这种字：写得快的人，笔画会连；写得慢的人，一笔一笔都清楚。可要是同一个人，前头慢、后头快，那多半不是手变了，是心乱了。</p>
+<p>「你早点睡。」老周又说了一遍，转身走进雨里。</p>
+<p>老周走了。雨声把他的脚步吞掉一半。</p>
+<p>沈砚关上门，插好门闩，回到案前。</p>
+<p>案角有一本薄册子，蓝布封面，边角磨得起了毛。他翻开，蘸墨，在最新一页上写：</p>
+<p>「三月十七，雨。更漏快。梦同前。」</p>
+<p>写完，他把册子合上，用镇纸压住。</p>
+<p>这本册子记了十年。每年三月十七，他都做同一个梦：雨声，一盏没关的灯，一只冰凉的手按在他胸口。他记不清那只手的样子，只记得冷。冷得他醒过来，胸口那一块衣裳总是湿的。</p>
+<p>镇上郎中说，这是胎里带的惊悸，长大就好。他十九岁了，没见好。</p>
+<p>他重新坐下，把王屠户那册《沧澜志》摊开。修书的人有个规矩：先看书，再动手。他翻到缺页的地方，指腹从纸背摸过去，能摸出底下压着的字痕——撕书的人手粗，撕的时候带走了半行。那是记山川的段落，讲东荒的青芜山：「……山中有泉，泉下有石，石上有字，年久不可辨……」</p>
+<p>他正看到这里，门响了。</p>
+<p>不是敲，是碰。像有人用指节在门板上轻轻磕了一下，磕完就停。沈砚以为是风吹的。风确实在吹，门缝里钻进来的雨气把灯焰压得歪了歪。</p>
+<p>第二下。</p>
+<p>他起身，抽开门闩。</p>
+<p>门外站着一个人。</p>
+<p>青衫，半旧，袖口齐齐整整。没有伞。头发湿了，贴在额角，肩上却没有多少水痕。那人看着四十来岁，眼角有一道浅浅的疤，笑起来的时候那道疤先动。</p>
+<p>「雨太大。」那人说，「借个地方站站。」</p>
+<p>沈砚没让开。「铺子打烊了。」</p>
+<p>「我不买东西。」那人抬头看了看匾额，匾上三个字是沈氏当年请人写的，漆掉了半边，「我借雨。」</p>
+<p>沈砚看了他一会儿。雨顺着屋檐往下倒，那人站在水里，衣裳湿得很均匀，脚下却没有溅起水花。</p>
+<p>「进来吧。」沈砚侧过身。</p>
+<p>那人进门的时候，沈砚闻到他身上的味道：旧纸、铁锈，还有一点很淡的、像雨水泡过的石头的气味。</p>
+<p>「坐。」沈砚把案边的凳子挪了挪，倒了碗热水推过去。</p>
+<p>那人没坐，先看案子。看那册摊开的《沧澜志》，看清水碗里的竹片，看镇纸底下压着的当票。看得很慢，像在读书。</p>
+<p>「你修书？」他问。</p>
+<p>「修，也抄。」</p>
+<p>「学了多久？」</p>
+<p>「十一年。」</p>
+<p>那人点点头，伸出手，隔着半尺，虚虚地从沈砚的手上方拂过，没有碰。</p>
+<p>「这双手，不像十九岁的。」他说。</p>
+<p>沈砚把手收回来。「你认识我？」</p>
+<p>「不认识。」那人这才坐下，端起碗，双手捧着，「我认识这门手艺。修书的人指节上有茧，茧在第二节，不在指尖。你指尖也有茧。」他吹了吹热水，「你抄过很多字，多到自己都数不清。十九岁，抄不了这么多。」</p>
+<p>沈砚没有接话。</p>
+<p>他确实抄过很多字。沈氏在的时候，铺子接抄经的活，一部《太上感应篇》五百文，他一个月能抄三部。可他记得自己是从十二岁才开始抄的。十二岁以前的事，他记得不多——落井、疯马、山塌，都是别人讲给他听的，讲得多了，就像自己记得。</p>
+<p>十二岁那年山塌，是真的。他记得那天他揣着二十文钱去东街买纸，回来时半条街没了，石头和房梁堆成一座小山，底下压着九户人家。他站在废墟前，手里还攥着那刀纸，纸很沉，沉得他两条胳膊发抖。后来镇上人说，这孩子命硬，山塌都绕着他走。没人问他那刀纸后来怎么办了。他自己记得：他把纸一张一张铺在废墟上，铺了整整一个下午，铺到天黑，纸全被雨打湿了，一张也不能用。</p>
+<p>「你多大了？」那人忽然问。</p>
+<p>「十九。」</p>
+<p>那人笑了一下，慢慢摇头。</p>
+<p>「不对。」他说，「你已经死过一次了。」</p>
+<p>灯花「啪」地爆了一声。</p>
+<p>沈砚站着没动。他听见自己的心跳，一下，一下，很稳。他这辈子听过不少怪话：算命的说他克亲，庙里的和尚说他命里有煞，镇上小孩背地里叫他「沈半仙」——因为他总能在塌方前一刻走开。他不信这些。</p>
+<p>可这个人说「死过一次」的时候，语气很平，像在说今天下了雨。</p>
+<p>「什么意思？」沈砚问。</p>
+<p>「字面上。」晏无咎说。</p>
+<p>「你怎么看出来的？」</p>
+<p>「看得出来。」他顿了顿，「你胸口有一块印子，你自己照不见。还有你这双眼——十九岁的人，看东西不会这么慢。」</p>
+<p>沈砚不说话了。他确实看东西慢。有时候一本书摊在面前，他得先看很久，才敢动第一刀。</p>
+<p>「你是什么人？」</p>
+<p>「姓晏，晏无咎。」那人把碗放下，「一个教书的。」</p>
+<p>教书的不该在这个时辰、这个天气，出现在东荒一个只有三百户人家的小镇上。沈砚想问，话到嘴边，又觉得问了也是白问。</p>
+<p>他往后退了半步，背抵住了书架。</p>
+<p>「你怎么进来的？」他问。</p>
+<p>晏无咎抬起眼。</p>
+<p>「你让我进来的。」他说，「你抽了门闩。」</p>
+<p>沈砚低头看门。门闩好好地插在门上。</p>
+<p>他明明记得自己没有插回去——他记得自己站在门口，记得雨水打湿了鞋尖，记得那人说「借雨」。可门闩是插着的，横木上的灰被抹出一道干净的痕。</p>
+<p>他再抬头，晏无咎已经坐在案子另一头了。</p>
+<p>不是凳子。是他平时修书坐的那把旧椅子，椅背上搭着他的一件外衫。那人坐着，捧着碗，像已经坐了半夜。</p>
+<p>「你别怕。」晏无咎说，「我若要害你，方才在门口就动手了。」</p>
+<p>「我不怕。」沈砚说。他说的是实话。他害怕的时候，手会先冷；现在他的手是热的。</p>
+<p>晏无咎看了他一会儿，点点头。「好。不怕就好。」</p>
+<p>他把碗里最后一口水喝完，站起身，把碗放回案上，摆得很正。</p>
+<p>「明天我还来。」他说。</p>
+<p>「来做什么？」</p>
+<p>「看看你的手。」晏无咎走到门边，回头，「你这双手，不该只用来修书。」</p>
+<p>他抽开门闩，推门出去。雨还在下，可这一次，沈砚听见了脚步声，很轻，一步一步，踩在积水里，慢慢远了。</p>
+<p>走到巷口，那人抬手朝这边挥了一下，像老朋友道别。沈砚没有挥手。</p>
+<p>他关上门，心想：明天若真来，得问他三件事——从哪里来，往哪里去，还有，怎么就看出来了。</p>
+<p>沈砚站在门口，站了很久。</p>
+<p>他伸手去插门闩，左手食指碰到横木，那一道旧疤忽然烫了起来。</p>
+<p>不是疼。是烫。像有人拿一枚刚从火里夹出来的铜钱，按在他指节上。</p>
+<p>他缩回手。烫意跟着退下去，退得很慢，像退潮。</p>
+<p>案上的灯还亮着。那碗水已经凉了，碗底沉着一点没化开的茶末。</p>
+<p>沈砚低头看着自己的左手。那道疤跟了他十九年，是小时候割纸刀划的，浅浅一道，平时不显。此刻它泛着一点红，红得发亮。</p>
+<p>他忽然想起那个梦。梦里那只冰凉的手按在他胸口，也是这个位置，也是这样，一点一点地烫起来。</p>
+<p>窗外，雨声停了。</p>
+<p>屋檐上的水还在滴。一滴，一滴，落在石阶上，不快不慢。</p>
+<p>像更漏。</p>
+<hr />
+<h2 id="heading-3">章节备注</h2>
+<ul>
+<li>本章悬念：道人说出「你死过一次」，并留下「明天我还来」；沈砚旧疤发烫，与梦中那只手的位置重合。</li>
+<li>下章预告：晏无咎带来一场雨后的怪事——老槐树一夜长百年又枯死。</li>
+<li>伏笔标记：梦册（每年三月十七）；旧疤；更漏变快；《沧澜志》缺页「石上有字」；门闩自己插上的细节。</li>
+<li>新名词登记：青芜镇（东荒小镇，三百户）；沈记书铺；更楼与铜漏壶；《沧澜志》（官修地方志，被撕毁）；晏无咎（自称教书的游方道人）。</li>
+</ul>
+
+                </div>
+
+            </article>
+
+
+            
+                
+	<div class="mod-post__foot">
+	 文章标签: 
+     
+        <a href="/tag/xiao-shuo/">小说</a>
+     
+     </br>
+	</div>
+
+                    
+
+                        <div class="mod-post__poster">
+                        </div>
+
+                        </div>
+
+                        
+                            
+<br>
+
+<div style="margin-bottom: 10px;">
+    上一篇 : <a href="/post/VIau9I/">第2章：借伞的人</a>
+</div>
+
+
+
+<div style="margin-bottom: 40px;">
+    下一篇 : <a href="/post/9W2oAH/"> 我在雨夜里写了一个偷时间的人：《借时》创作记</a>
+</div>
+
+
+</div>	
+
+                                
+
+                                    
+                                        <!-- Reading Progress Component -->
+<div class="reading-progress-container">
+  <span class="reading-label">阅读进度</span>
+  <span class="reading-value">0%</span>
+  <svg class="progress-ring" viewBox="0 0 24 24">
+    <!-- Background Circle -->
+    <circle class="progress-ring__circle-bg" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+    <!-- Progress Circle -->
+    <circle class="progress-ring__circle" stroke-width="3" fill="transparent" r="10" cx="12" cy="12" />
+  </svg>
+</div>
+                                            <footer id="footer" class="footer">
+    <nav>
+        
+            
+                    <a class="menu-item" href="/">
+                        首页
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/post">
+                        博客
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/memos">
+                        闪念
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/archives">
+                        归档
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/tags">
+                        标签
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="/links">
+                        友链
+                    </a>
+                    
+             · 
+                    <a class="menu-item" href="https://ireader.eu.org/post/about">
+                        关于
+                    </a>
+                    
+    </nav>
+
+    <div class="Copyright">Copyright &copy; 2026 <a href="https://ireader.eu.org">
+                云深未语
+            </a></div>
+
+    <div class="index_footer">
+        <a href="https://icp.gov.moe/?keyword=20260468" target="_blank">萌ICP备20260468号</a> ·
+            <a class="rss" href="/feed.xml" target="_blank" rel="noopener noreferrer">
+                <i class="ri-rss-line"></i> RSS
+            </a>
+    </div>
+</footer>
+
+
+
+
+    <script>console.log("\n%c ✦ Gridea Pro v1.3.0-beta.2 %c · Theme: amore v1.1.0 · https://gridea.pro %c\n","color:#fadfa3;background:#111111;padding:9px 14px;border-radius:4px 0 0 4px;font-weight:500;font-size:12px","color:#e05c00;background:#fff3ec;padding:9px 14px;border-radius:0 4px 4px 0;font-size:11px","")</script>
+</body>
+
+    </html>
